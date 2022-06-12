@@ -6,7 +6,7 @@ Very simple (and very fast) html compression. See benchmark and comparison
     <img alt="HtmlMin" src="https://github.com/abordage/html-min/blob/master/docs/images/abordage-html-min-cover.png">
 </p>
 
-<p style="text-align: center;">
+<p style="text-align: center;" align="center">
 
 <a href="https://packagist.org/packages/abordage/html-min" title="Packagist version">
     <img alt="Packagist Version" src="https://img.shields.io/packagist/v/abordage/html-min">
@@ -31,7 +31,6 @@ Very simple (and very fast) html compression. See benchmark and comparison
 <a href="https://www.php.net/" title="PHP version">
     <img alt="Packagist PHP Version Support" src="https://img.shields.io/packagist/php-v/abordage/html-min">
 </a>
-
 
 </p>
 

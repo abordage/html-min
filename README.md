@@ -1,4 +1,4 @@
-# HtmlMin: PHP package for html minification on-the-fly
+# HtmlMin: PHP package for HTML minification on-the-fly
 
 Very simple (and very fast) html compression. See benchmark and comparison
 
@@ -6,46 +6,36 @@ Very simple (and very fast) html compression. See benchmark and comparison
     <img alt="HtmlMin" src="https://github.com/abordage/html-min/blob/master/docs/images/abordage-html-min-cover.png">
 </p>
 
-[//]: # (<p style="text-align: center;">)
+<p style="text-align: center;">
 
-[//]: # (<a href="https://packagist.org/packages/abordage/html-min" title="Packagist version">)
+<a href="https://packagist.org/packages/abordage/html-min" title="Packagist version">
+    <img alt="Packagist Version" src="https://img.shields.io/packagist/v/abordage/html-min">
+</a>
 
-[//]: # (    <img alt="Packagist Version" src="https://img.shields.io/packagist/v/abordage/html-min">)
 
-[//]: # (</a>)
+<a href="https://github.com/abordage/html-min/blob/master/README.md" title="License">
+    <img alt="License" src="https://img.shields.io/github/license/abordage/html-min">
+</a>
 
-[//]: # ()
-[//]: # (<a href="https://github.com/abordage/html-min/blob/master/README.md" title="License">)
 
-[//]: # (    <img alt="License" src="https://img.shields.io/github/license/abordage/html-min">)
+<a href="https://github.com/abordage/html-min/actions/workflows/tests.yml" title="GitHub Tests Status">
+    <img alt="GitHub Tests Status" src="https://img.shields.io/github/workflow/status/abordage/html-min/Tests?label=tests">
+</a>
 
-[//]: # (</a>)
 
-[//]: # ()
-[//]: # (<a href="https://github.com/abordage/html-min/actions/workflows/tests.yml" title="GitHub Tests Status">)
+<a href="https://github.com/abordage/html-min/actions/workflows/tests.yml" title="GitHub Code Style Status">
+    <img alt="GitHub Code Style Status" src="https://img.shields.io/github/workflow/status/abordage/html-min/PHP%20CS%20Fixer?label=code%20style">
+</a>
 
-[//]: # (    <img alt="GitHub Tests Status" src="https://img.shields.io/github/workflow/status/abordage/html-min/tests?label=tests">)
 
-[//]: # (</a>)
+<a href="https://www.php.net/" title="PHP version">
+    <img alt="Packagist PHP Version Support" src="https://img.shields.io/packagist/php-v/abordage/html-min">
+</a>
 
-[//]: # ()
-[//]: # (<a href="https://github.com/abordage/html-min/actions/workflows/tests.yml" title="GitHub Code Style Status">)
 
-[//]: # (    <img alt="GitHub Code Style Status" src="https://img.shields.io/github/workflow/status/abordage/html-min/php-cs-fixer?label=code%20style">)
+</p>
 
-[//]: # (</a>)
 
-[//]: # ()
-[//]: # (<a href="https://www.php.net/" title="PHP version">)
-
-[//]: # (    <img alt="Packagist PHP Version Support" src="https://img.shields.io/packagist/php-v/abordage/html-min">)
-
-[//]: # (</a>)
-
-[//]: # ()
-[//]: # (</p>)
-
-[//]: # ()
 
 ## Features:
 - Removing extra whitespaces

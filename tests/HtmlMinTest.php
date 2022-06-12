@@ -12,6 +12,18 @@ class HtmlMinTest extends TestCase
         $htmlMin = new HtmlMin();
 
         /** test */
+        $html = "<div> <a  href=''> doctype  not  found </a> </div>";
+        $expected = "<div> <a  href=''> doctype  not  found </a> </div>";
+        $this->assertEquals($expected, $htmlMin->minify($html));
+
+        /** test */
+        $html = "<!DOCTYPE HTML><div> <a  href=''> doctype    found </a> </div>";
+        $expected = "<!DOCTYPE HTML><div><a href=''>doctype found</a></div>";
+        $this->assertEquals($expected, $htmlMin->minify($html));
+        $htmlMin->findDoctypeInDocument(false);
+
+
+        /** test */
         $html = "<div> <a href=''> abc  def </a> </div>";
         $expected = "<div><a href=''>abc def</a></div>";
         $this->assertEquals($expected, $htmlMin->minify($html));

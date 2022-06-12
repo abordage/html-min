@@ -4,6 +4,7 @@ namespace Abordage\HtmlMin;
 
 class HtmlMin
 {
+    protected bool $findDoctypeInDocument = true;
     protected bool $removeHtmlComments = true;
     protected bool $removeBlankLinesInScriptElements = false;
     protected bool $removeWhitespaceBetweenTags = true;
@@ -14,6 +15,13 @@ class HtmlMin
     ];
 
     protected array $skippedElements = [];
+
+    public function findDoctypeInDocument(bool $enable = true): HtmlMin
+    {
+        $this->findDoctypeInDocument = $enable;
+
+        return $this;
+    }
 
     public function removeBlankLinesInScriptElements(bool $enable = true): HtmlMin
     {
@@ -31,6 +39,10 @@ class HtmlMin
 
     public function minify(string $html): string
     {
+        if ($this->findDoctypeInDocument && $this->doctypeNotFound($html)) {
+            return $html;
+        }
+
         if ($this->removeHtmlComments) {
             $html = $this->removeHtmlComments($html);
         }
@@ -42,6 +54,13 @@ class HtmlMin
         $html = $this->collapseWhitespaces($html);
 
         return trim($html);
+    }
+
+    protected function doctypeNotFound(string $html): bool
+    {
+        $string = substr(trim($html), 0, 100);
+
+        return stripos($string, '<!DOCTYPE') === false;
     }
 
     protected function removeHtmlComments(string $html): string

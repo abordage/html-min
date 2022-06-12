@@ -59,11 +59,12 @@ composer require abordage/html-min
 require __DIR__ . '/vendor/autoload.php';
 
 $htmlMin = new Abordage\HtmlMin\HtmlMin();
-$result = $htmlMin->minify("<div>your html</div>");
+$result = $htmlMin->minify("<!DOCTYPE html><html>   ...  </html>");
 ```
 ## Options
 
 ```php
+$htmlMin->findDoctypeInDocument(); // default: true
 $htmlMin->removeWhitespaceBetweenTags(); // default: true
 $htmlMin->removeBlankLinesInScriptElements(); // default: false
 ```

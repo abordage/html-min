@@ -1,6 +1,6 @@
 # HtmlMin: PHP package for HTML minification on-the-fly
 
-Very simple (and very fast) html compression. See benchmark and comparison
+Very simple (and very fast) html compression. See [benchmark and comparison](https://github.com/abordage/html-min-benchmark)
 
 <p style="text-align: center;" align="center">
     <img alt="HtmlMin" src="https://github.com/abordage/html-min/blob/master/docs/images/abordage-html-min-cover.png">
@@ -34,8 +34,6 @@ Very simple (and very fast) html compression. See benchmark and comparison
 
 </p>
 
-
-
 ## Features:
 - Removing extra whitespaces
 - Removing html comments
@@ -57,6 +55,7 @@ composer require abordage/html-min
 
 ```php
 <?php
+
 require __DIR__ . '/vendor/autoload.php';
 
 $htmlMin = new Abordage\HtmlMin\HtmlMin();
@@ -71,7 +70,7 @@ $htmlMin->removeBlankLinesInScriptElements(); // default: false
 
 ## Benchmark
 
-See abordage/html-min-benchmark
+See [abordage/html-min-benchmark](https://github.com/abordage/html-min-benchmark)
 
 ## Testing
 

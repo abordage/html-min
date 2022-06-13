@@ -1,4 +1,4 @@
-# PHP package for on-the-fly HTML minification
+# HtmlMin: PHP package for HTML minification
 
 Very simple (and very fast) html compression. See [benchmark and comparison](https://github.com/abordage/html-min-benchmark)
 

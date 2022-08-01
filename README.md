@@ -2,9 +2,11 @@
 
 Very simple (and very fast) html compression. See [benchmark and comparison](https://github.com/abordage/html-min-benchmark)
 
-<p style="text-align: center;" align="center">
-    <img alt="HtmlMin" src="https://github.com/abordage/html-min/blob/master/docs/images/abordage-html-min-cover.png">
-</p>
+[//]: # (<p style="text-align: center;" align="center">)
+
+[//]: # (    <img alt="HtmlMin" src="https://github.com/abordage/html-min/blob/master/docs/images/abordage-html-min-cover.png?raw=true">)
+
+[//]: # (</p>)
 
 <p style="text-align: center;" align="center">
 
@@ -96,7 +98,7 @@ Please see [CONTRIBUTING](https://github.com/abordage/.github/blob/master/CONTRI
 ## Credits
 
 - [Pavel Bychko](https://github.com/abordage)
-- [All Contributors](../../contributors)
+- [All Contributors](https://github.com/abordage/html-min/graphs/contributors)
 
 ## License
 

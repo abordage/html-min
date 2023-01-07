@@ -3,7 +3,7 @@
 Very simple (and very fast) html compression. See [benchmark and comparison](https://github.com/abordage/html-min-benchmark)
 
 <p style="text-align: center;" align="center">
-    <img alt="HtmlMin" src="https://github.com/abordage/html-min/blob/master/docs/images/abordage-html-min-cover.png">
+    <img alt="HtmlMin" src="https://github.com/abordage/html-min/blob/master/docs/images/abordage-html-min-cover.png?raw=true">
 </p>
 
 <p style="text-align: center;" align="center">
@@ -15,11 +15,11 @@ Very simple (and very fast) html compression. See [benchmark and comparison](htt
 
 
 <a href="https://github.com/abordage/html-min/actions/workflows/tests.yml" title="GitHub Tests Status">
-    <img alt="GitHub Tests Status" src="https://img.shields.io/github/workflow/status/abordage/html-min/Tests?label=tests">
+    <img alt="GitHub Tests Status" src="https://img.shields.io/github/actions/workflow/status/abordage/html-min/tests.yml?label=tests">
 </a>
 
 <a href="https://github.com/abordage/html-min/actions/workflows/tests.yml" title="GitHub Code Style Status">
-    <img alt="GitHub Code Style Status" src="https://img.shields.io/github/workflow/status/abordage/html-min/PHP%20CS%20Fixer?label=code%20style">
+    <img alt="GitHub Code Style Status" src="https://img.shields.io/github/actions/workflow/status/abordage/html-min/php-cs-fixer.yml?label=code%20style">
 </a>
 
 <a href="https://www.php.net/" title="PHP version">

@@ -1,5 +1,10 @@
 <?php
 
+/** @noinspection JSUnresolvedVariable */
+/** @noinspection JSUnusedLocalSymbols */
+
+declare(strict_types=1);
+
 namespace Abordage\HtmlMin\Tests;
 
 use Abordage\HtmlMin\HtmlMin;
@@ -7,35 +12,59 @@ use PHPUnit\Framework\TestCase;
 
 class HtmlMinTest extends TestCase
 {
-    public function testMinify(): void
-    {
-        $htmlMin = new HtmlMin();
+    private HtmlMin $htmlMin;
 
-        /** test */
+    protected function setUp(): void
+    {
+        $this->htmlMin = new HtmlMin();
+        $this->htmlMin->findDoctypeInDocument(false);
+        $this->htmlMin->removeWhitespaceBetweenTags();
+    }
+
+    public function testDoNotMinifyIfDoctypeIsNotFound(): void
+    {
+        $this->htmlMin->findDoctypeInDocument();
+        $this->htmlMin->removeWhitespaceBetweenTags(false);
+
         $html = "<div> <a  href=''> doctype  not  found </a> </div>";
         $expected = "<div> <a  href=''> doctype  not  found </a> </div>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
 
-        /** test */
+        $this->htmlMin->findDoctypeInDocument(false);
+        $this->htmlMin->removeWhitespaceBetweenTags();
+    }
+
+    public function testMinifyIfDoctypeIsFound(): void
+    {
+        $this->htmlMin->findDoctypeInDocument();
+
         $html = "<!DOCTYPE HTML><div> <a  href=''> doctype    found </a> </div>";
         $expected = "<!DOCTYPE HTML><div><a href=''>doctype found</a></div>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
-        $htmlMin->findDoctypeInDocument(false);
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
 
+        $this->htmlMin->findDoctypeInDocument(false);
+    }
 
-        /** test */
+    public function testMinifyWithoutDoctype(): void
+    {
         $html = "<div> <a href=''> abc  def </a> </div>";
         $expected = "<div><a href=''>abc def</a></div>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+    }
 
-        /** test */
-        $htmlMin->removeWhitespaceBetweenTags(false);
+    public function testDoNotRemoveWhitespaceBetweenTags(): void
+    {
+        $this->htmlMin->removeWhitespaceBetweenTags(false);
+
         $html = "<div> <a  href=''> abc  def </a> </div>";
         $expected = "<div> <a href=''> abc def </a> </div>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
-        $htmlMin->removeWhitespaceBetweenTags();
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
 
-        /** test */
+        $this->htmlMin->removeWhitespaceBetweenTags();
+    }
+
+    public function testRemoveWhitespaceBetweenTags(): void
+    {
         $html = "<p>
                     <span  style='color:   #fff'>
                         <i> one </i> and <u> </u>
@@ -43,9 +72,11 @@ class HtmlMinTest extends TestCase
                     </span>
                 </p>";
         $expected = "<p><span style='color: #fff'><i>one</i> and <u></u> two</span></p>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+    }
 
-        /** test */
+    public function testLivewire(): void
+    {
         $html = "<div><!-- d --> a
 
         <? b   ?>  c
@@ -60,9 +91,11 @@ class HtmlMinTest extends TestCase
             {dd:xx}
         </div>";
         $expected = "<div>a <? b ?> c <!-- Livewire Component --> {dd:xx}</div>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+    }
 
-        /** test */
+    public function testStyleTag(): void
+    {
         $html = "<style>
         a:  {
             color: inherit;
@@ -71,9 +104,11 @@ class HtmlMinTest extends TestCase
         }
         </style>";
         $expected = "<style>a: { color: inherit; background-color: transparent; text-decoration: inherit }</style>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+    }
 
-        /** test */
+    public function testTextarea(): void
+    {
         $html = "<textarea>
         this
         is
@@ -84,12 +119,15 @@ class HtmlMinTest extends TestCase
         is
         textarea
         </textarea>";
-        $this->assertEquals($expected, $htmlMin->minify($html));
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+    }
 
+    public function testJavascript(): void
+    {
+        $this->htmlMin->removeBlankLinesInScriptElements();
 
-        /** test */
         $html = <<<EOT
-    <footer>
+<footer>
         <script type="text/javascript">
             (function() {
                 let a = 1
@@ -105,7 +143,8 @@ let a = 1
 const b = c
 })();</script></footer>
 EOT;
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
 
-        $this->assertEquals($expected, $htmlMin->removeBlankLinesInScriptElements()->minify($html));
+        $this->htmlMin->removeBlankLinesInScriptElements(false);
     }
 }

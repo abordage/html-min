@@ -1,3 +1,5 @@
+<!--suppress HtmlDeprecatedAttribute -->
+
 # HtmlMin: PHP package for HTML minification
 
 Very simple (and very fast) html compression. See [benchmark and comparison](https://github.com/abordage/html-min-benchmark)
@@ -39,7 +41,7 @@ Very simple (and very fast) html compression. See [benchmark and comparison](htt
 - Compresses in microseconds. See benchmark and comparison
 
 ## Requirements
-- PHP 7.4 or higher
+- PHP 7.4 - 8.2
 
 ## Installation
 
@@ -84,6 +86,8 @@ composer test:phpunit
 composer test:phpstan
 composer test:phpcsf
 ```
+
+or see https://github.com/abordage/html-min/actions/workflows/tests.yml
 
 ## Feedback
 

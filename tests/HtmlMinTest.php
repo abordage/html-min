@@ -94,6 +94,20 @@ class HtmlMinTest extends TestCase
         $this->assertEquals($expected, $this->htmlMin->minify($html));
     }
 
+    public function testKnockout(): void
+    {
+        $html = "<div>
+        <!-- ko if: true -->
+            <span>First item</span>
+        <!-- /ko -->
+
+        <!-- ko template: getTemplate() --><!-- /ko -->
+
+        </div>";
+        $expected = "<div><!-- ko if: true --><span>First item</span><!-- /ko --><!-- ko template: getTemplate() --><!-- /ko --></div>";
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+    }
+
     public function testStyleTag(): void
     {
         $html = "<style>

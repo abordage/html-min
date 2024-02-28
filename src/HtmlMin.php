@@ -67,7 +67,7 @@ class HtmlMin
 
     protected function removeHtmlComments(string $html): string
     {
-        return (string)preg_replace('~<!--[^]><!\[](?!Livewire)(.*?)[^]]-->~s', '', $html);
+        return (string)preg_replace('~<!--[^]><!\[](?!Livewire|ko |/ko)(.*?)[^]]-->~s', '', $html);
     }
 
     protected function trimScriptElements(string $html): string

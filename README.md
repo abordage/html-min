@@ -34,14 +34,15 @@ Very simple (and very fast) html compression. See [benchmark and comparison](htt
 
 </p>
 
-## Features:
+## Features
 - Removing extra whitespaces
 - Removing html comments
+- Removing trailing slashes from void elements (HTML5)
 - Skip `textarea`, `pre` and `script` elements
 - Compresses in microseconds. See benchmark and comparison
 
 ## Requirements
-- PHP 7.4 - 8.2
+- PHP 7.4 or higher
 
 ## Installation
 
@@ -64,9 +65,21 @@ $result = $htmlMin->minify("<!DOCTYPE html><html>   ...  </html>");
 ## Options
 
 ```php
-$htmlMin->findDoctypeInDocument(); // default: true
-$htmlMin->removeWhitespaceBetweenTags(); // default: true
+$htmlMin->findDoctypeInDocument();           // default: true
+$htmlMin->removeWhitespaceBetweenTags();     // default: true
 $htmlMin->removeBlankLinesInScriptElements(); // default: false
+$htmlMin->removeTrailingSlashes();           // default: false
+```
+
+### Remove trailing slashes
+
+In HTML5, void elements (`<link>`, `<meta>`, `<img>`, `<br>`, etc.) should not have trailing slashes.
+Enable this option to convert XHTML-style tags like `<link ... />` to HTML5-style `<link ...>`.
+
+```php
+$htmlMin->removeTrailingSlashes();
+$result = $htmlMin->minify('<link rel="stylesheet" href="style.css" />');
+// Result: <link rel="stylesheet" href="style.css">
 ```
 
 ## Benchmark

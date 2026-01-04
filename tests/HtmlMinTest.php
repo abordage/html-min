@@ -1,7 +1,10 @@
 <?php
 
-/** @noinspection JSUnresolvedVariable */
-/** @noinspection JSUnusedLocalSymbols */
+/**
+ * @noinspection HtmlUnknownTarget
+ * @noinspection JSUnresolvedVariable
+ * @noinspection JSUnusedLocalSymbols
+ */
 
 declare(strict_types=1);
 
@@ -160,5 +163,47 @@ EOT;
         $this->assertEquals($expected, $this->htmlMin->minify($html));
 
         $this->htmlMin->removeBlankLinesInScriptElements(false);
+    }
+
+    public function testRemoveTrailingSlashes(): void
+    {
+        $this->htmlMin->removeTrailingSlashes();
+
+        $html = '<link rel="stylesheet" href="style.css" /><meta charset="UTF-8" /><img src="image.png"  alt=""/>';
+        $expected = '<link rel="stylesheet" href="style.css"><meta charset="UTF-8"><img src="image.png" alt="">';
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+
+        $this->htmlMin->removeTrailingSlashes(false);
+    }
+
+    public function testRemoveTrailingSlashesWithAttributes(): void
+    {
+        $this->htmlMin->removeTrailingSlashes();
+
+        $html = '<link rel="preload" as="style" href="app.css" /><input type="text" name="test" />';
+        $expected = '<link rel="preload" as="style" href="app.css"><input type="text" name="test">';
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+
+        $this->htmlMin->removeTrailingSlashes(false);
+    }
+
+    public function testDoNotRemoveTrailingSlashesWhenDisabled(): void
+    {
+        $this->htmlMin->removeTrailingSlashes(false);
+
+        $html = '<link rel="stylesheet" href="style.css" />';
+        $expected = '<link rel="stylesheet" href="style.css" />';
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+    }
+
+    public function testRemoveTrailingSlashesPreservesNonVoidElements(): void
+    {
+        $this->htmlMin->removeTrailingSlashes();
+
+        $html = '<div><link href="style.css" /><span>text</span></div>';
+        $expected = '<div><link href="style.css"><span>text</span></div>';
+        $this->assertEquals($expected, $this->htmlMin->minify($html));
+
+        $this->htmlMin->removeTrailingSlashes(false);
     }
 }

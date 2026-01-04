@@ -2,6 +2,14 @@
 
 All notable changes to `html-min` will be documented in this file.
 
+## 1.0.0 - 2026-01-04
+
+### What's Changed
+
+* feat: add option to remove trailing slashes from void elements by @abordage in https://github.com/abordage/html-min/pull/32
+
+**Full Changelog**: https://github.com/abordage/html-min/compare/0.2.2...1.0.0
+
 ## 0.2.2 - 2024-02-28
 
 ### What's Changed
